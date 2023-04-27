@@ -1,6 +1,6 @@
 import sqlite3
 
-def iventory_Add(item_ID, item_Name, item_Category, item_Quantity):
+def inventory_Add(item_ID, item_Name, item_Category, item_Quantity):
     # Connect to the SQLite database
     conn = sqlite3.connect('site.db') #change to inventory.db if I need to make a data base for it?
     c = conn.cursor()
