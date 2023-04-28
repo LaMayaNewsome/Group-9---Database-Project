@@ -75,3 +75,37 @@ def inventory_List():
 
     # Close the database connection
     conn.close()
+
+    # Main function to handle user input and call appropriate functions
+
+
+def main():
+    while True:
+        print("\nMenu:")
+        print("1. View available items")
+        print("2. Add a item to inventory")
+        print("3. Remove an item from inventory")
+        print("4. Edit an item's name in inventory")
+        print("5. Edit an item's quantity in inventory")
+        print("6. Quit")
+
+        choice = int(input("Enter your choice: "))
+
+        if choice == 1:
+            inventory_List()
+        elif choice == 2:
+            inventory_Add()
+        elif choice == 3:
+            inventory_Remove()
+        elif choice == 4:
+            inventory_editName()
+        elif choice == 5:
+            inventory_editQuantity()
+        elif choice == 6:
+            break
+        else:
+            print("Invalid choice, please try again.")
+
+
+if __name__ == '__main__':
+    main()
