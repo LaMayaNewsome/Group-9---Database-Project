@@ -1,3 +1,5 @@
+int loginID = 0;
+
 def option1():
     print("Option 1 selected")
 
@@ -15,7 +17,7 @@ options = {
     '1': option1,
     '2': option2,
     '3': option3,
-    '4': exit_program
+    '4': exit_program,
 }
 
 while True:
