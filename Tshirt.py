@@ -4,7 +4,7 @@ import sqlite3
 
 
 def view_tshirts():
-    conn = sqlite3.connect('ecommerce.db')
+    conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
 
     cursor.execute('SELECT * FROM t_shirts')
@@ -25,7 +25,7 @@ def add_to_cart():
         input("Enter the ID of the t-shirt you want to add to your cart: "))
     quantity = int(input("Enter the quantity you want to add to your cart: "))
 
-    conn = sqlite3.connect('ecommerce.db')
+    conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
 
     cursor.execute(
@@ -51,7 +51,7 @@ def remove_from_cart():
     cart_id = int(
         input("Enter the ID of the item you want to remove from your cart: "))
 
-    conn = sqlite3.connect('ecommerce.db')
+    conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
 
     cursor.execute('SELECT * FROM shopping_cart WHERE cart_id=?', (cart_id,))
