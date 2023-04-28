@@ -25,6 +25,21 @@ class TShirts:
         for row in rows:
             print(row)
 
+    def search_by_color(self, color):
+        query = "SELECT * FROM t_shirts WHERE t_shirt_color = ?"
+        result_set = self.db.execute(query, (color,))
+        return result_set.fetchall()
+
+    def search_by_size(self, size):
+        query = "SELECT * FROM t_shirts WHERE t_shirt_size = ?"
+        result_set = self.db.execute(query, (size,))
+        return result_set.fetchall()
+
+    def search_by_style(self, style):
+        query = "SELECT * FROM t_shirts WHERE t_shirt_name LIKE ?"
+        result_set = self.db.execute(query, ('%' + style + '%',))
+        return result_set.fetchall()
+
     def close_connection(self):
         """Close the database connection."""
         self.conn.close()
