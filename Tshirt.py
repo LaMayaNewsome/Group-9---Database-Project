@@ -18,22 +18,3 @@ def view_tshirts():
     conn.close()
 
 # Main function to handle user input and call appropriate functions
-
-def main():
-    while True:
-        print("\nMenu:")
-        print("1. View available t-shirts")
-        print("2. Quit")
-
-        choice = int(input("Enter your choice: "))
-
-        if choice == 1:
-            view_tshirts()
-        elif choice == 2:
-            break
-        else:
-            print("Invalid choice, please try again.")
-
-
-if __name__ == '__main__':
-    main()
