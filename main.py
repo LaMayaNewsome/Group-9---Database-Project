@@ -117,6 +117,12 @@ def shop():
 
         elif shopChoice == "3":
             shoppingCart.review_all_cart()  # function to view cart
+            choice = input(
+                "Would you like to remove an item from your cart? (y/n):")
+            if choice.lower() == "y":
+                inventory_Functions.remove_from_cart()
+            elif choice.lower() == "n":
+                mainMenu()
 
         elif shopChoice == "4":
             shoppingCart.cart_checkout(1)  # function to checkout
