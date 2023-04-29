@@ -1,20 +1,24 @@
 import sqlite3
 
 def inventory_editQuantity(item_Quantity):
-    item_id = int(input("Enter the ID of the product (either tshirt or video game) you want change the quantity of: "))
+    item_id = int(input("Enter the inventory ID of the product (either tshirt or video game) you want to change the quantity of: "))
 
     conn = sqlite3.connect('site.db')
     c = conn.cursor()
 
     # Execute an SQL UPDATE statement to update values in the database
-    if item_id in range(101,103):
-        c.execute("UPDATE inventory SET quantity = ?", (item_Quantity))
-    
-    elif item_id in range(1,3):
-        c.execute("UPDATE inventory SET quantity = ?", (item_Quantity))
-    
+    if item_id in range(1, 3):
+        if item_Quantity >= 0:
+            c.execute("UPDATE inventory SET quantity = ? WHERE inventory_ID = ?", (item_Quantity, item_id))
+        else:
+            print("Quantity cannot be negative.")
+    elif item_id in range(1, 3):
+        if item_Quantity >= 0:
+            c.execute("UPDATE inventory SET quantity = ? WHERE inventory_ID = ?", (item_Quantity, item_id))
+        else:
+            print("Quantity cannot be negative.")
     else:
-        print("Item ID Not Found, Please Try Again...")
+        print("Item ID not found. Please try again.")
 
     # Commit the transaction
     conn.commit()
