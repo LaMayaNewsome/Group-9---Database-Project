@@ -1,5 +1,117 @@
 import sqlite3
 
+def cart_total(input_userCartID):
+    allCosts = []
+
+    # Connect to the database file
+    conn = sqlite3.connect('site.db')
+
+    # Create a cursor object
+    cursor = conn.cursor()
+
+    # Execute a SELECT statement to retrieve all data from the table
+    cursor.execute("SELECT * FROM shoppingCart where status = 0 and user_cartID = ?",
+                   (input_userCartID,))
+
+    allOrder = cursor.fetchall()
+
+    for eachOrder in allOrder:
+        tableDirect = eachOrder[2]
+        product_id = eachOrder[3]
+        quantityCount = eachOrder[4]
+
+        if (tableDirect == "videoGames"):
+            cursor.execute("Select * from videoGames where gameID = ?",(product_id,))
+        else:
+            cursor.execute("Select * from t_shirt where t_shirt_id = ?", (product_id, ))
+
+        rows = cursor.fetchall()
+
+        for row in rows:
+            if (tableDirect == "videoGames"):
+                cost1 = (float(row[3]) * float(quantityCount))
+                allCosts.append(cost1)
+
+            else:
+                cost2 = (float(row[4]) * float(quantityCount))
+                allCosts.append(cost2)
+
+    totalCost = 0.0
+    for eachCost in allCosts:
+        totalCost = float(totalCost) + float(eachCost)
+
+    # Close the cursor and the database connection
+    cursor.close()
+    conn.close()
+
+    print(totalCost)
+    return totalCost
+
+def cart_checkout(input_userCartID):
+    # Connect to the database file
+    conn = sqlite3.connect('site.db')
+
+    # Create a cursor object
+    cursor = conn.cursor()
+
+    # Execute a SELECT statement to retrieve all data from the table
+    cursor.execute("UPDATE shoppingCart SET status = ? WHERE user_cartID = ?", (-1, input_userCartID))
+
+    conn.commit()
+
+    # Close the cursor and the database connection
+    cursor.close()
+    conn.close()
+
+def review_all_cart():
+    # Connect to the database file
+    conn = sqlite3.connect('site.db')
+
+    # Create a cursor object
+    cursor = conn.cursor()
+
+    # Execute a SELECT statement to retrieve all data from the table
+    cursor.execute("SELECT * FROM shoppingCart")
+
+    # Fetch all rows of the result set and store them in a list of tuples
+    rows = cursor.fetchall()
+
+    for r in rows:
+        print(r[0])
+
+    # Close the cursor and the database connection
+    cursor.close()
+    conn.close()
+
+    # Convert the list of tuples into a list of lists
+    list_of_lists = [list(row) for row in rows]
+
+    # Print the list of lists
+    print(list_of_lists)
+
+def view_past_carts(input_user_id):
+    # Connect to the database file
+    conn = sqlite3.connect('site.db')
+
+    # Create a cursor object
+    cursor = conn.cursor()
+
+    # Execute a SELECT statement to retrieve all data from the table
+    cursor.execute("SELECT * FROM shoppingCart where status = -1 and user_cartID = ?", (input_user_id,))
+
+    # Fetch all rows of the result set and store them in a list of tuples
+    rows = cursor.fetchall()
+
+    # Close the cursor and the database connection
+    cursor.close()
+    conn.close()
+
+    # Convert the list of tuples into a list of lists
+    list_of_lists = [list(row) for row in rows]
+
+    # Print the list of lists
+    print(list_of_lists)
+
 def add_cart_item_product(input_userCart, input_table, input_product, input_quantity):
     # Connect to the SQLite database
     conn = sqlite3.connect('site.db')
@@ -45,5 +157,3 @@ def remove_cartItem(input_userCart, input_product, input_table):
 
     # Close the database connection
     conn.close()
-
-remove_cartItem(1, 1, "Shirt")
