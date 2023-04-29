@@ -116,7 +116,6 @@ def shop():
             loginMenu()
 
 
-
 #Browse t_shirts
 #the user can view all the tShirts and be able to add one to their cart
 
@@ -150,11 +149,14 @@ def accountOptions():
         accountChoice = displayAccountMenu()
         if accountChoice == "1":
             #function to delete account ex. user.deleteAccount(1)
+            user.deleteAccount(1)
             break
         elif accountChoice == "2":
             #function to edit payment information
+            user.editPayment(2)
         elif accountChoice == "3":
             #function to edit shippping info
+            user.editShipping(3)
         elif accountChoice == "4":
             #function to view order history
         elif accountChoice == "5":
