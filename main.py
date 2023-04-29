@@ -103,24 +103,34 @@ def shop():
         shopChoice = displayShopMenu()
         if shopChoice == "1":
             Tshirt.view_all_tshirts()  # function to view tshirts
-            item_id = input(
-                "Enter the ID of the t-shirt you want to add to your cart: ")
-            quantity = input("Enter the quantity you want to add: ")
+            choice = input(
+                "Would you like to add a t-shirt to your cart? (y/n):")
+            if choice.lower() == "y":
+                item_id = input(
+                    "Enter the ID of the t-shirt you want to add to your cart: ")
+                quantity = input("Enter the quantity you want to add: ")
+            elif choice.lower() == "n":
+                mainMenu()
+            else:
+                print(
+                    "Incorrect Option Entered. You will now be returned back to the main menu.")
+                mainMenu()
             shoppingCart.add_cart_item_product(
                 1, "t_shirt", "t_shirt_id", quantity)  # function to add item to cart
         elif shopChoice == "2":
             videoGame.viewAllGames()
-            item_id = input(
-                "Enter the ID of the video game you want to add to your cart:")
-            quantity = input("Enter the quantity you want to add: ")
+            choice = input(
+                "Would you like to add a video game to your cart? (y/n):")
+            if choice.lower() == "y":
+                item_id = input(
+                    "Enter the ID of the video game you want to add to your cart: ")
+                quantity = input("Enter the quantity you want to add: ")
+            elif choice.lower() == "n":
+                mainMenu()
             shoppingCart.add_cart_item_product(
                 1, "videoGames", "item_id", quantity)  # function to add item to cart
         elif shopChoice == "3":
             shoppingCart.review_all_cart()  # function to view cart
-            item_id = input(
-                "Enter the ID of the item you want to remove from your cart: ")
-            # function to remove an item from cart
-            shoppingCart.remove_cartItem(1, item_id)
         elif shopChoice == "4":
             shoppingCart.cart_checkout(1)  # function to checkout
         elif shopChoice == "5":
