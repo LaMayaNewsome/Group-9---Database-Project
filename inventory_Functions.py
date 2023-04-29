@@ -78,13 +78,13 @@ def remove_from_cart():
     elif item in range(101,103):
         cursor.execute('DELETE FROM shopping_cart WHERE product_id=?', (product_id,))
         cursor.execute(
-            'UPDATE inventory SET quantity=quantity+? WHERE t_shirt_id=?', (item[3], item[2]))
+            'UPDATE inventory SET quantity=quantity+? WHERE t_shirt_id=?', (product_id,))
         conn.commit()
         print("Item removed from cart successfully!")
     elif item in range(1,3):
         cursor.execute('DELETE FROM shopping_cart WHERE product_id=?', (product_id,))
         cursor.execute(
-            'UPDATE inventory SET quantity=quantity+? WHERE gameID=?', (item[3], item[2]))
+            'UPDATE inventory SET quantity=quantity+? WHERE gameID=?', (product_id))
         conn.commit()
         print("Item removed from cart successfully!")
 
