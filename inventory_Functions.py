@@ -96,7 +96,7 @@ def remove_from_cart():
 
 def inventory_display():
     # Connect to the database
-    conn = sqlite3.connect('your_database_file.db')
+    conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
 
     # Execute the query
