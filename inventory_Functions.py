@@ -22,9 +22,7 @@ def inventory_editQuantity(item_Quantity):
     # Close the database connection
     conn.close()
 
-def add_to_cart():
-    item_id = int(input("Enter the ID of the product (either tshirt or video game) you want to add to your cart: "))
-    quantity = int(input("Enter the quantity you want to add to your cart: "))
+def add_to_cart(item_id, quantity):
 
     conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
