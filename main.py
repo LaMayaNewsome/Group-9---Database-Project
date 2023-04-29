@@ -93,8 +93,7 @@ def shop():
                     "Enter the ID of the t-shirt you want to add to your cart: ")
                 quantity = input("Enter the quantity you want to add: ")
                 # function to add item to cart
-                shoppingCart.add_cart_item_product(
-                    1, "t_shirts", item_id, quantity)
+                shoppingCart.add_cart_item_product(item_id, quantity)
             elif choice.lower() == "n":
                 mainMenu()
             else:
