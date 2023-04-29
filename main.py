@@ -1,7 +1,7 @@
 # Methods and tools project
 # LaMaya Newsome - ljn72
 # Keshawn Davis - kld609
-# Lucas Foley
+# Lucas Foley - lhf57
 # Sam Hankins
 # Maxwell
 
@@ -109,6 +109,8 @@ def shop():
                 item_id = input(
                     "Enter the ID of the t-shirt you want to add to your cart: ")
                 quantity = input("Enter the quantity you want to add: ")
+                inventory_Functions.add_cart_item_product(
+                1, "videoGames", item_id, quantity)  # function to add item to cart
             elif choice.lower() == "n":
                 mainMenu()
             else:
@@ -125,10 +127,11 @@ def shop():
                 item_id = input(
                     "Enter the ID of the video game you want to add to your cart: ")
                 quantity = input("Enter the quantity you want to add: ")
+                inventory_Functions.add_cart_item_product(
+                1, "videoGames", item_id, quantity)  # function to add item to cart
             elif choice.lower() == "n":
                 mainMenu()
-            shoppingCart.add_cart_item_product(
-                1, "videoGames", "item_id", quantity)  # function to add item to cart
+            
         elif shopChoice == "3":
             shoppingCart.review_all_cart()  # function to view cart
         elif shopChoice == "4":
