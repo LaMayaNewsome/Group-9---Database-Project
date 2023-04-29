@@ -109,7 +109,7 @@ def shop():
                 item_id = input(
                     "Enter the ID of the t-shirt you want to add to your cart: ")
                 quantity = input("Enter the quantity you want to add: ")
-                inventory_Functions.add_cart_item_product(
+                shoppingCart.add_cart_item_product(
                 1, "videoGames", item_id, quantity)  # function to add item to cart
             elif choice.lower() == "n":
                 mainMenu()
@@ -127,7 +127,7 @@ def shop():
                 item_id = input(
                     "Enter the ID of the video game you want to add to your cart: ")
                 quantity = input("Enter the quantity you want to add: ")
-                inventory_Functions.add_cart_item_product(
+                shoppingCart.add_cart_item_product(
                 1, "videoGames", item_id, quantity)  # function to add item to cart
             elif choice.lower() == "n":
                 mainMenu()
