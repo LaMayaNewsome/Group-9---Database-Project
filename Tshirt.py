@@ -23,19 +23,13 @@ def main():
     while True:
         print("\nMenu:")
         print("1. View available t-shirts")
-        print("2. Add a t-shirt to your cart")
-        print("3. Remove a t-shirt from your cart")
-        print("4. Quit")
+        print("2. Quit")
 
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
             view_tshirts()
         elif choice == 2:
-            add_to_cart()
-        elif choice == 3:
-            remove_from_cart()
-        elif choice == 4:
             break
         else:
             print("Invalid choice, please try again.")
