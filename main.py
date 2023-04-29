@@ -1,15 +1,15 @@
-#Methods and tools project
-#LaMaya Newsome - ljn72
-#Keshawn Davis - 
-#Lucas Foley
-#Sam Hankins
-#Maxwell Lam - mvl57
+# Methods and tools project
+# LaMaya Newsome - ljn72
+# Keshawn Davis - kld609
+# Lucas Foley - lhf57
+# Sam Hankins
+# Maxwell
 
 import videoGame
 import shoppingCart
 import inventory_Functions
 import Tshirt
-#import user
+# import user
 
 
 # Function to login or create a new account
@@ -27,16 +27,6 @@ def loginMenu():
 def login():
     loginChoice = loginMenu()
     if loginChoice == "1":
-        #prompt user to enter login credentials
-        print("\n")
-        username = input("Enter your username: ")
-        password = input("Enter your password: ")
-
-        """
-        #Check if login credentials are valid
-        if user.login(username, password):   #enter login function here
-            #if login is successful, show main menu
-            mainMenu()
         # prompt user to enter login credentials
         username = input("Enter your username: ")
         password = input("Enter your password: ")
@@ -63,24 +53,13 @@ def login():
         user.createAccount(username, password) #add function to create and account here
         
         #Show success message and return to login menu
-        # Prompt the user to create a new account
-        username = input("Create your username: ")
-        password = input("Create your password: ")
-
-        # Create a new account with the entered credentials
-        user.createAccount(username, password)
-        # Show success message and return to login menu
         print("Account created successfully. Please log in.")
         
         loginMenu()
     else:
         print("Invalid choice. Please try again.")
         loginMenu()
-        """
-
-        loginMenu()
-
-
+       
 # Function to display the main menu
 def displayMainMenu():
     print("\n")
@@ -130,8 +109,7 @@ def shop():
                 item_id = input(
                     "Enter the ID of the t-shirt you want to add to your cart: ")
                 quantity = input("Enter the quantity you want to add: ")
-                inventory_Functions.add_to_cart(
-                1, "videoGames", item_id, quantity)  # function to add item to cart
+                inventory_Functions.add_to_cart(item_id, quantity)  # function to add item to cart
             elif choice.lower() == "n":
                 mainMenu()
             else:
@@ -147,28 +125,34 @@ def shop():
                 item_id = input(
                     "Enter the ID of the video game you want to add to your cart: ")
                 quantity = input("Enter the quantity you want to add: ")
-                inventory_Functions.add_to_cart(
-                1, "videoGames", item_id, quantity)  # function to add item to cart
+                inventory_Functions.add_to_cart(item_id, quantity)  # function to add item to cart
             elif choice.lower() == "n":
                 mainMenu()
             
         elif shopChoice == "3":
             shoppingCart.review_all_cart()  # function to view cart
-
+            
         elif shopChoice == "4":
             print("Checkout :)")
             #function to checkout shoppingCart.checkout(1)
-
         elif shopChoice == "4":
-            print("function to checkout")
             shoppingCart.cart_checkout(1)  # function to checkout
-
         elif shopChoice == "5":
             break
         else:
             print("Invalid choice. Please try again.")
             # loginMenu()
 
+# view cart
+# the user should be able to view all items in their cart and remove any item they don't want
+
+# checkout
+# the user will be able to checkout and purchase all items in the cart
+
+
+
+
+#Function to display Account options menu
 # Function to display Account options menu
 def displayAccountMenu():
     print("Account Options:")
@@ -180,6 +164,7 @@ def displayAccountMenu():
     return input("Please choose an option: ")
 
 
+"""
 def accountOptions():
     while True:
         accountChoice = displayAccountMenu()
@@ -195,6 +180,11 @@ def accountOptions():
         elif accountChoice == "4":
             print("order history")
             #function to view order history
+            # function to edit payment information
+        elif accountChoice == "3":
+            # function to edit shippping info
+        elif accountChoice == "4":
+            # function to view order history
         elif accountChoice == "5":
             break
         else:
@@ -206,4 +196,13 @@ def main():
 
 
 if __name__ == '__main__':
+    main()
+"""
+
+
+def main():
+    mainMenu()
+
+
+if __name__ == "__main__":
     main()
