@@ -89,12 +89,9 @@ def shop():
             choice = input(
                 "Would you like to add a t-shirt to your cart? (y/n):")
             if choice.lower() == "y":
-                item_id = input(
-                    "Enter the ID of the t-shirt you want to add to your cart: ")
-                quantity = input("Enter the quantity you want to add: ")
+               
                 # function to add item to cart
-                shoppingCart.add_cart_item_product(
-                    1, "t_shirts", item_id, quantity)
+                shoppingCart.add_cart_item_product()
             elif choice.lower() == "n":
                 mainMenu()
             else:
@@ -107,11 +104,7 @@ def shop():
             choice = input(
                 "Would you like to add a video game to your cart? (y/n):")
             if choice.lower() == "y":
-                item_id = input(
-                    "Enter the ID of the video game you want to add to your cart: ")
-                quantity = input("Enter the quantity you want to add: ")
-                # function to add item to cart
-                shoppingCart.add_cart_item_product(item_id, quantity)
+                shoppingCart.add_cart_item_product()
             elif choice.lower() == "n":
                 mainMenu()
 
