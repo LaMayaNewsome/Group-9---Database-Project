@@ -27,7 +27,7 @@ def add_to_cart(item_id, quantity):
     conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
 
-    if item_id in range(101,103): #T-Shirt Selection
+    if item_id in range(100,104): #T-Shirt Selection
         cursor.execute('SELECT item_quantity FROM t_shirts WHERE t_shirt_id=?', (item_id))
         item_quantity = cursor.fetchone()[0]
 
@@ -41,7 +41,7 @@ def add_to_cart(item_id, quantity):
             conn.commit()
             print("T-shirt added to cart successfully!")
     
-    elif item_id in range(1,3): #Video Game Selection
+    elif item_id in range(0,4): #Video Game Selection
         cursor.execute('SELECT item_quantity FROM t_shirts WHERE gameID=?', (item_id))
         item_quantity = cursor.fetchone()[0]
 
