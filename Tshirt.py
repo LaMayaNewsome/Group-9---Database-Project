@@ -9,7 +9,7 @@ def view_all_tshirts():
     c = conn.cursor()
 
     # Retrieve all the t-shirts and their quantities from the database
-    c.execute("SELECT t_shirt.*, inventory.quantity FROM t_shirt INNER JOIN inventory ON t_shirt.t_shirt_id = inventory.t_shirt_id")
+    c.execute("SELECT * FROM t_shirt")
     all_tshirts = c.fetchall()
 
     # Print the details of all the t-shirts
@@ -20,7 +20,6 @@ def view_all_tshirts():
         print("Color: ", tshirt[2])
         print("Size: ", tshirt[3])
         print("Price: ", tshirt[4])
-        print("Quantity: ", tshirt[5])
 
     # Close the database connection
     conn.close()
