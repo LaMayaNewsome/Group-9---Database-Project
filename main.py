@@ -45,7 +45,6 @@ def login():
         password = input("Create your password: ")
 
         # Create a new account with the entered credentials
-        # add function to create and account here
         user.createAccount(username, password)
 
         # Show success message and return to login menu
@@ -57,8 +56,6 @@ def login():
 
 
 # Function to display the main menu
-
-
 def displayMainMenu():
     print("\n")
     print("Welcome to our e-commerce store!")
@@ -68,8 +65,6 @@ def displayMainMenu():
     return input("Please choose and option (1-3): ")
 
 # Function for the overall logic
-
-
 def mainMenu():
     while True:
         mainChoice = displayMainMenu()
@@ -142,13 +137,6 @@ def shop():
             print("Invalid choice. Please try again.")
             # loginMenu()
 
-
-# Browse t_shirts
-# the user can view all the tShirts and be able to add one to their cart
-
-# Browse videoGames
-# the user can view all the videoGames and be able to add a game to their cart
-
 # view cart
 # the user should be able to view all items in their cart and remove any item they don't want
 
@@ -157,7 +145,6 @@ def shop():
 
 
 # Function to display Account options menu
-
 def displayAccountMenu():
     print("Account Options:")
     print("1. Delete account")
