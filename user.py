@@ -59,12 +59,7 @@ def editShipping():
     conn.execute("INSERT INTO users (shippingAddress) VALUES (?)", (shippingAddress))
 
 def logout():
-    #logout = input("Enter 6 to logout.")
-    pass
-
-#test logout
-logout()
-print('Logged Out Successfully.')
+    conn.close() #Closing the connection is the logout
 
 def deleteUser():
     conn.execute("DELETE FROM user WHERE username = ?, DELETE FROM users WHERE payment = ?, DELETE FROM users WHERE shippingAddress = ?", ('current user',))
