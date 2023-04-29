@@ -17,13 +17,28 @@ def createAccount():
 
     username = input("Enter account username to add: ")
     password = input("Enter account password to add: ")
+    shippingAddress = input("Enter a Shipping Address: ")
+    payment = input("Enter Your Card Number: ")
 
-    c.execute("INSERT INTO user VALUES (?, ?)", [username, password])
+    c.execute("INSERT INTO user VALUES (?, ?, ?, ?)", [username, password, shippingAddress, payment])
 
     conn.commit()
     conn.close()
 
     print("Account added")
+
+def register(username, password):
+    # Get the highest existing user ID from the database
+    cur = conn.cursor()
+    cur.execute("SELECT MAX(userID) FROM user")
+    max_userID = cur.fetchone()[0]
+    if max_userID is None:
+        max_userID = 0
+    # Generate a new user ID by adding 1 to the highest existing user ID
+    userID = max_userID + 1
+    cur.execute("INSERT INTO user (userID, username, password) VALUES (?, ?, ?)", (userID, username, password))
+    conn.commit()
+    return userID # Return the new user ID
 
 def login():   
     
@@ -53,20 +68,6 @@ def login():
     else:
         return None
 
-def register(username, password):
-    # Get the highest existing user ID from the database
-    cur = conn.cursor()
-    cur.execute("SELECT MAX(userID) FROM user")
-    max_userID = cur.fetchone()[0]
-    if max_userID is None:
-        max_userID = 0
-    # Generate a new user ID by adding 1 to the highest existing user ID
-    userID = max_userID + 1
-    cur.execute("INSERT INTO user (userID, username, password) VALUES (?, ?, ?)", (userID, username, password))
-    conn.commit()
-    return userID # Return the new user ID
-
-
 def editPayment():
     payment = input("Enter New Card Number: ")
 
@@ -85,3 +86,4 @@ def deleteUser():
 
     conn.commit()
     conn.close()
+    
