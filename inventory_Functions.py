@@ -22,14 +22,12 @@ def inventory_editQuantity(item_Quantity):
     # Close the database connection
     conn.close()
 
-def add_to_cart():
+def add_to_cart(item_id, quantity):
     conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
-    item_id = input("Enter the ID of the item you want to add to your cart: ")
     item_id = int(item_id)
     
     if item_id >= 101 and item_id <= 103:  # T-Shirt Selection
-        quantity = input("Enter the quantity you want to add: ")
         quantity = int(quantity)
         cursor.execute('SELECT item_Quantity FROM inventory WHERE tshirt_ID=?', (item_id,))
         item_quantity = cursor.fetchone()[0]
@@ -45,7 +43,6 @@ def add_to_cart():
             print("T-shirt added to cart successfully!")
 
     elif item_id >= 1 and item_id <= 3:  # Video Game Selection
-        quantity = input("Enter the quantity you want to add: ")
         quantity = int(quantity)
         cursor.execute('SELECT item_Quantity FROM inventory WHERE VideoGame_ID=?', (item_id,))
         item_quantity = cursor.fetchone()[0]
