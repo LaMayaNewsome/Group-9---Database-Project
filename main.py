@@ -24,28 +24,12 @@ def loginMenu():
 # Handle user choice for login
 
 
-def login():
+def loginMain():
     loginChoice = loginMenu()
     if loginChoice == "1":
-        # prompt user to enter login credentials
-        username = input("Enter your username: ")
-        password = input("Enter your password: ")
-
-        # Check if login credentials are valid
-        if user.login(username, password):  # enter login function here
-            displayMainMenu()
-        else:
-            # if login is unsccessful, show error message and return to login menu
-            print("Invalid login credentias. Please try again.")
-            loginMenu()
-
-        mainMenu()
+        user.login()
 
     elif loginChoice == "2":
-        # Prompt the user to create a new account
-
-        # Create a new account with the entered credentials
-        # add function to create and account here
         user.createAccount()
 
         # Show success message and return to login menu
@@ -189,7 +173,7 @@ def accountOptions():
 
 
 def main():
-    login()
+    loginMain()
 
 
 if __name__ == '__main__':
