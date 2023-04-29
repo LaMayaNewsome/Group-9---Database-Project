@@ -36,11 +36,11 @@ def login():
             displayMainMenu()
         else:
             #if login is unsccessful, show error message and return to login menu
-            print("Invalid login credentias. Please try again.")
+            print("Invalid login credentials. Please try again.")
             loginMenu()
     elif loginChoice == "2":
         #Prompt the user to create a new account
-        username = input("enter your username: ")
+        username = input("Enter your username: ")
         password = input("Enter your password: ")
 
         #Create a new account with the entered credentials
@@ -60,7 +60,7 @@ def displayMainMenu():
     print("1. Shop")
     print("2. Account options")
     print("3. Exit")
-    return input("Please choose and option (1-3): ")
+    return input("Please choose an option (1-3): ")
 
 #Function for the overall logic
 def main():
