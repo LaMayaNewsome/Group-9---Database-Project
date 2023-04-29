@@ -59,8 +59,7 @@ def mainMenu():
         if mainChoice == "1":
             shop()
         elif mainChoice == "2":
-            print("Not yet implemented")
-            # accountOptions()
+            accountOptions()
         elif mainChoice == "3":
             print("Thank you for shopping with us!")
             break
@@ -158,11 +157,11 @@ def accountOptions():
             user.deleteUser(1)
             break
         elif accountChoice == "2":
-            print("Edit payment information")
-            user.editPayment
+            # print("Edit payment information")
+            user.editPayment()
         elif accountChoice == "3":
-            print("Edit shipping information")
-            user.editShipping
+            # print("Edit shipping information")
+            user.editShipping()
         elif accountChoice == "4":
             print("order history")
         elif accountChoice == "5":

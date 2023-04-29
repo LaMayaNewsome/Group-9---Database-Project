@@ -19,13 +19,17 @@ def createAccount():
 
     username = input("Enter account username to add: ")
     password = input("Enter account password to add: ")
+    shippingAddress = input("Enter Shipping Address: ")
+    payment = input("Enter Card Number: ")
 
-    c.execute("INSERT INTO user VALUES (?, ?)", [username, password])
+    c.execute("INSERT INTO user VALUES (?, ?, ?, ?)", [
+              username, password, shippingAddress, payment])
 
     conn.commit()
     conn.close()
 
     print("Account added")
+    main.loginMain()
 
 
 def login():
@@ -48,17 +52,33 @@ def login():
 
     if c.fetchone() == None:
         print("Incorrct credentials")
-        main.mainMenu()
+        login()
     else:
-        main.displayMainMenu()
         print("Logged in!")
+        main.mainMenu()
 
 
-def editPayment():
-    payment = input("Enter New Card Number: ")
+def editPaymentInfo(userID):
+    conn = sqlite3.connect('site.db')
+    c = conn.cursor()
 
-    conn.execute(
-        "DELETE FROM user WHERE payment = ?, INSERT INTO user (payment) VALUES (?)", (payment))
+    # Retrieve current payment info
+    c.execute("SELECT payment_info FROM users WHERE user_id = ?", (userID,))
+    current_payment_info = c.fetchone()[0]
+
+    print("Your current payment info is:", current_payment_info)
+
+    # Prompt user for new payment info
+    new_payment_info = input("Enter your new payment info: ")
+
+    # Update payment info in the database
+    c.execute("UPDATE users SET payment_info = ? WHERE user_id = ?",
+              (new_payment_info, userID))
+    conn.commit()
+
+    print("Payment info updated successfully!")
+
+    conn.close()
 
 
 def editShipping():
