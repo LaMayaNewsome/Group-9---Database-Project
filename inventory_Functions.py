@@ -111,7 +111,8 @@ def inventory_display():
     cursor.close()
     conn.close()
 
-def main():
+"""
+def main(): #not needed since they'll be individually used in main.py
     while True:
         print("\nMenu:")
         print("1. View Current Item Inventory")
@@ -137,3 +138,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+"""
