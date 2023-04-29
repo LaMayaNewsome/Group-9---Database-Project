@@ -97,16 +97,16 @@ def shop():
             #t_shirt.view_tshirts()   function to view tshirts
             item_id = input("Enter the ID of the t-shirt you want to add to your cart: ")
             quantity = input("Enter the quantity you want to add: ")
-            #shoppingCart.addCartItemProduct(1, "t_shirt", item_id, quantity)  function to add item to cart
+            inventory_Functions.add_to_cart(1, "t_shirt", item_id, quantity)
         elif shopChoice == "2":
             videoGame.viewAllGames()
             item_id = input("Enter the ID of the video game you want to add to your cart:")
             quantity = input("Enter the quantity you want to add: ")
-            #function to add item to cart shoppingCart.addCartItemProduct(1, "videoGames, item_id", quantity)
+            inventory_Functions.add_to_cart(1, "videoGames", item_id, quantity)
         elif shopChoice == "3":
             #function to view cart shoppingCart.viewCart(1)
             item_id = input("Enter the ID of the item you want to remove from your cart: ")
-            #function to remove an item from cart shoppingCart.removeCartItem(1, item_id)
+            inventory_Functions.remove_from_cart(1, item_id)
         elif shopChoice == "4":
             #function to checkout shoppingCart.checkout(1)
         elif shopChoice == "5":
