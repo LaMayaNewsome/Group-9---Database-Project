@@ -13,6 +13,7 @@ def view_all_tshirts():
 
     # Print the details of all the t-shirts
     for tshirt in all_tshirts:
+        print("\n")
         print("ID: ", tshirt[0])
         print("Name: ", tshirt[1])
         print("Color: ", tshirt[2])
