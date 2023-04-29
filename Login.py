@@ -10,13 +10,13 @@ def login():
         conn = sqlite3.connect("site.db")
         c = conn.cursor()
 
-        c.execute('''CREATE TABLE accounts
-                (uname text, pwd text)''')
+        c.execute('''CREATE TABLE users
+                (username text, password text)''')
 
-    uname = input("Enter Username: ")
-    pwd = input("Enter Password: ")
+    username = input("Enter Username: ")
+    password = input("Enter Password: ")
 
-    c.execute("SELECT * FROM accounts WHERE uname = ? AND pwd = ?", [uname, pwd])
+    c.execute("SELECT * FROM users WHERE username = ? AND password = ?", [username, password])
 
     if c.fetchone() == None:
         print("Incorrct credentials")

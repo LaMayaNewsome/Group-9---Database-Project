@@ -10,28 +10,16 @@ def createAccount():
         conn = sqlite3.connect("site.db")
         c = conn.cursor()
 
-        c.execute('''CREATE TABLE accounts
-            (uname text, pwd text)''')
+        c.execute('''CREATE TABLE users
+            (username text, password text)''')
 
-<<<<<<< Updated upstream
-    uname = input("Enter account username to add: ")
-    pwd = input("Enter account password to add: ")
+    username = input("Enter account username to add: ")
+    password = input("Enter account password to add: ")
 
-    c.execute("INSERT INTO accounts VALUES (?, ?)", [uname, pwd])
+    c.execute("INSERT INTO users VALUES (?, ?)", [username, password])
 
     conn.commit()
     conn.close()
 
     print("Account added")
-=======
-        uname = input("Enter account username to add: ")
-        pwd = input("Enter account password to add: ")
-
-        c.execute("INSERT INTO accounts VALUES (?, ?)", [uname, pwd])
-
-        conn.commit()
-        conn.close()
-
-        print("Account added")
->>>>>>> Stashed changes
 

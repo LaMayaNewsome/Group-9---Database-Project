@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 def logout():
-    #perform logout actions here
+    #logout = input("Enter 6 to logout.")
     pass
 
 #test logout

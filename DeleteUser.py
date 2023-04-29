@@ -4,7 +4,7 @@ import sqlite3
 
 conn = sqlite3.connect('site.db')
 
-conn.execute("DELETE FROM user WHERE username = ?, DELETE FROM paymentInfo WHERE cardNumber = ?, DELETE FROM shippingAddress WHERE address = ?", ('current user',))
+conn.execute("DELETE FROM user WHERE username = ?, DELETE FROM users WHERE payment = ?, DELETE FROM users WHERE shippingAddress = ?", ('current user',))
 
 conn.commit()
 conn.close()
