@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 #Methods and tools project
 #LaMaya Newsome - ljn72
 #Keshawn Davis - 
 #Lucas Foley - 
 #Sam Hankins -
 #Maxwell Lam - mvl57
+=======
+# Methods and tools project
+# LaMaya Newsome - ljn72
+# Keshawn Davis - kld609
+# Lucas Foley - lhf57
+# Sam Hankins
+# Maxwell
+>>>>>>> 3fc6f0feb98d5910026bf3d98cefd57109b7c1f8
 
 import videoGame
 import shoppingCart
@@ -93,6 +102,7 @@ def displayShopMenu():
 def shop():
     while True:
         shopChoice = displayShopMenu()
+<<<<<<< HEAD
         if shopChoice == "1":  
             #t_shirt.view_tshirts()   function to view tshirts
             item_id = input("Enter the ID of the t-shirt you want to add to your cart: ")
@@ -107,6 +117,41 @@ def shop():
             #function to view cart shoppingCart.viewCart(1)
             item_id = input("Enter the ID of the item you want to remove from your cart: ")
             #function to remove an item from cart shoppingCart.removeCartItem(1, item_id)
+=======
+        if shopChoice == "1":
+            Tshirt.view_all_tshirts()  # function to view tshirts
+            choice = input(
+                "Would you like to add a t-shirt to your cart? (y/n):")
+            if choice.lower() == "y":
+                item_id = input(
+                    "Enter the ID of the t-shirt you want to add to your cart: ")
+                quantity = input("Enter the quantity you want to add: ")
+                inventory_Functions.add_cart_item_product(
+                1, "videoGames", item_id, quantity)  # function to add item to cart
+            elif choice.lower() == "n":
+                mainMenu()
+            else:
+                print(
+                    "Incorrect Option Entered. You will now be returned back to the main menu.")
+                mainMenu()
+            shoppingCart.add_cart_item_product(
+                1, "t_shirt", "t_shirt_id", quantity)  # function to add item to cart
+        elif shopChoice == "2":
+            videoGame.viewAllGames()
+            choice = input(
+                "Would you like to add a video game to your cart? (y/n):")
+            if choice.lower() == "y":
+                item_id = input(
+                    "Enter the ID of the video game you want to add to your cart: ")
+                quantity = input("Enter the quantity you want to add: ")
+                inventory_Functions.add_cart_item_product(
+                1, "videoGames", item_id, quantity)  # function to add item to cart
+            elif choice.lower() == "n":
+                mainMenu()
+            
+        elif shopChoice == "3":
+            shoppingCart.review_all_cart()  # function to view cart
+>>>>>>> 3fc6f0feb98d5910026bf3d98cefd57109b7c1f8
         elif shopChoice == "4":
             #function to checkout shoppingCart.checkout(1)
         elif shopChoice == "5":

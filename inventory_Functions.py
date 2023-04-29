@@ -91,7 +91,8 @@ def remove_from_cart():
     conn.close()
 
 
-def main():
+"""
+def main(): #not needed since they'll be individually used in main.py
     while True:
         print("\nMenu:")
         print("1. Edit an item's Quantity")
@@ -115,3 +116,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+"""
