@@ -1,9 +1,9 @@
 #Methods and tools project
 #LaMaya Newsome - ljn72
 #Keshawn Davis - 
-#Lucas Foley
-#Sam Hankins
-#Maxwell
+#Lucas Foley - 
+#Sam Hankins -
+#Maxwell Lam - mvl57
 
 import videoGame
 import shoppingCart
