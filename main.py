@@ -1,30 +1,22 @@
-<<<<<<< HEAD
 #Methods and tools project
 #LaMaya Newsome - ljn72
 #Keshawn Davis - 
-#Lucas Foley - 
-#Sam Hankins -
+#Lucas Foley
+#Sam Hankins
 #Maxwell Lam - mvl57
-=======
-# Methods and tools project
-# LaMaya Newsome - ljn72
-# Keshawn Davis - kld609
-# Lucas Foley - lhf57
-# Sam Hankins
-# Maxwell
->>>>>>> 3fc6f0feb98d5910026bf3d98cefd57109b7c1f8
 
 import videoGame
 import shoppingCart
 import inventory_Functions
 import Tshirt
-import user
+#import user
 
 
 
 
 #Function to login or create a new account
 def loginMenu():
+    print("\n")
     print("Welcome to the store!")
     print("Please select an option:")
     print("1. Login")
@@ -36,35 +28,47 @@ def login():
     loginChoice = loginMenu()
     if loginChoice == "1":
         #prompt user to enter login credentials
-        username = input("enter your username: ")
+        print("\n")
+        username = input("Enter your username: ")
         password = input("Enter your password: ")
 
+        """
         #Check if login credentials are valid
         if user.login(username, password):   #enter login function here
             #if login is successful, show main menu
-            displayMainMenu()
+            mainMenu()
         else:
             #if login is unsccessful, show error message and return to login menu
             print("Invalid login credentias. Please try again.")
             loginMenu()
+        """
+        mainMenu()
+
     elif loginChoice == "2":
         #Prompt the user to create a new account
-        username = input("enter your username: ")
+        print("\n")
+        username = input("Enter your username: ")
         password = input("Enter your password: ")
 
+        """
         #Create a new account with the entered credentials
         user.createAccount(username, password) #add function to create and account here
         
         #Show success message and return to login menu
         print("Account created successfully. Please log in.")
+        
         loginMenu()
     else:
         print("Invalid choice. Please try again.")
+        loginMenu()
+        """
+
         loginMenu()
 
 
 #Function to display the main menu
 def displayMainMenu():
+    print("\n")
     print("Welcome to our e-commerce store!")
     print("1. Shop")
     print("2. Account options")
@@ -72,7 +76,7 @@ def displayMainMenu():
     return input("Please choose and option (1-3): ")
 
 #Function for the overall logic
-def main():
+def mainMenu():
     while True:
         mainChoice = displayMainMenu()
         if mainChoice == "1":
@@ -102,22 +106,6 @@ def displayShopMenu():
 def shop():
     while True:
         shopChoice = displayShopMenu()
-<<<<<<< HEAD
-        if shopChoice == "1":  
-            #t_shirt.view_tshirts()   function to view tshirts
-            item_id = input("Enter the ID of the t-shirt you want to add to your cart: ")
-            quantity = input("Enter the quantity you want to add: ")
-            #shoppingCart.addCartItemProduct(1, "t_shirt", item_id, quantity)  function to add item to cart
-        elif shopChoice == "2":
-            videoGame.viewAllGames()
-            item_id = input("Enter the ID of the video game you want to add to your cart:")
-            quantity = input("Enter the quantity you want to add: ")
-            #function to add item to cart shoppingCart.addCartItemProduct(1, "videoGames, item_id", quantity)
-        elif shopChoice == "3":
-            #function to view cart shoppingCart.viewCart(1)
-            item_id = input("Enter the ID of the item you want to remove from your cart: ")
-            #function to remove an item from cart shoppingCart.removeCartItem(1, item_id)
-=======
         if shopChoice == "1":
             Tshirt.view_all_tshirts()  # function to view tshirts
             choice = input(
@@ -151,30 +139,15 @@ def shop():
             
         elif shopChoice == "3":
             shoppingCart.review_all_cart()  # function to view cart
->>>>>>> 3fc6f0feb98d5910026bf3d98cefd57109b7c1f8
+            
         elif shopChoice == "4":
+            print("Checkout :)")
             #function to checkout shoppingCart.checkout(1)
         elif shopChoice == "5":
             break
         else:
             print("Invalid choice. Please try again.")
             loginMenu()
-
-
-
-#Browse t_shirts
-#the user can view all the tShirts and be able to add one to their cart
-
-#Browse videoGames
-#the user can view all the videoGames and be able to add a game to their cart
-
-#view cart
-#the user should be able to view all items in their cart and remove any item they don't want
-
-#checkout
-#the user will be able to checkout and purchase all items in the cart
-
-
 
 
 
@@ -197,10 +170,13 @@ def accountOptions():
             #function to delete account ex. user.deleteAccount(1)
             break
         elif accountChoice == "2":
+            print("Edit payment information")
             #function to edit payment information
         elif accountChoice == "3":
+            print("Edit shipping information")
             #function to edit shippping info
         elif accountChoice == "4":
+            print("order history")
             #function to view order history
         elif accountChoice == "5":
             break
@@ -208,3 +184,9 @@ def accountOptions():
             print("Invalid choice. Please try again.")
             displayAccountMenu()
         
+def main():
+    login()
+
+
+if __name__ == '__main__':
+    main()
