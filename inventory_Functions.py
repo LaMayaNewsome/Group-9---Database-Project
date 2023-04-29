@@ -28,14 +28,14 @@ def add_to_cart(item_id, quantity):
     cursor = conn.cursor()
 
     if item_id in range(100,104): #T-Shirt Selection
-        cursor.execute('SELECT item_quantity FROM t_shirts WHERE t_shirt_id=?', (item_id))
+        cursor.execute('SELECT item_quantity FROM inventory WHERE t_shirt_id=?', (item_id))
         item_quantity = cursor.fetchone()[0]
 
         if item_quantity < quantity:
             print("Insufficient stock!")
         else:
             cursor.execute(
-                'INSERT INTO shopping_cart (customer_id, t_shirt_id, quantity) VALUES (?, ?, ?)', (1, item_id, item_quantity))
+                'INSERT INTO shopping_cart (customer_id, t_shirt_id, quantity) VALUES (?, ?, ?)', (1, item_id, quantity))
             cursor.execute(
                 'UPDATE inventory SET item_quantity=item_quantity-? WHERE t_shirt_id=?', (quantity, item_id))
             conn.commit()
