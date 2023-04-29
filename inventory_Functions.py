@@ -90,24 +90,42 @@ def remove_from_cart():
 
     conn.close()
 
+def inventory_display():
+    # Connect to the database
+    conn = sqlite3.connect('your_database_file.db')
+    cursor = conn.cursor()
+
+    # Execute the query
+    cursor.execute('SELECT * FROM inventory')
+    rows = cursor.fetchall()
+
+    # Display the inventory data
+    for row in rows:
+        print(row)
+
+    # Close the connection
+    cursor.close()
+    conn.close()
 
 def main():
     while True:
         print("\nMenu:")
-        print("1. Edit an item's Quantity")
-        print("2. Add Item to Shopping Cart")
-        print("3. Remove item from Shopping Cart")
-        print("4. Quit")
+        print("1. View Current Item Inventory")
+        print("2. Edit an item's Quantity")
+        print("3. Add Item to Shopping Cart")
+        print("4. Remove item from Shopping Cart")
+        print("5. Quit")
 
         choice = int(input("Enter your choice: "))
-
         if choice == 1:
-            inventory_editQuantity()
+            inventory_display()
         elif choice == 2:
-            add_to_cart()
+            inventory_editQuantity()
         elif choice == 3:
-            remove_from_cart()
+            add_to_cart()
         elif choice == 4:
+            remove_from_cart()
+        elif choice == 5:
             break
         else:
             print("Invalid choice, please try again.")
