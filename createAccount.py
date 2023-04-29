@@ -13,6 +13,7 @@ def createAccount():
         c.execute('''CREATE TABLE accounts
             (uname text, pwd text)''')
 
+<<<<<<< Updated upstream
     uname = input("Enter account username to add: ")
     pwd = input("Enter account password to add: ")
 
@@ -22,4 +23,15 @@ def createAccount():
     conn.close()
 
     print("Account added")
+=======
+        uname = input("Enter account username to add: ")
+        pwd = input("Enter account password to add: ")
+
+        c.execute("INSERT INTO accounts VALUES (?, ?)", [uname, pwd])
+
+        conn.commit()
+        conn.close()
+
+        print("Account added")
+>>>>>>> Stashed changes
 
