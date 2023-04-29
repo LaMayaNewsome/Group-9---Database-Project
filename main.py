@@ -104,7 +104,7 @@ def shop():
                 item_id = input(
                     "Enter the ID of the t-shirt you want to add to your cart: ")
                 quantity = input("Enter the quantity you want to add: ")
-                shoppingCart.add_cart_item_product(
+                inventory_Functions.add_to_cart(
                 1, "videoGames", item_id, quantity)  # function to add item to cart
             elif choice.lower() == "n":
                 mainMenu()
@@ -112,8 +112,7 @@ def shop():
                 print(
                     "Incorrect Option Entered. You will now be returned back to the main menu.")
                 mainMenu()
-            shoppingCart.add_cart_item_product(
-                1, "t_shirt", "t_shirt_id", quantity)  # function to add item to cart
+
         elif shopChoice == "2":
             videoGame.viewAllGames()
             choice = input(
@@ -122,7 +121,7 @@ def shop():
                 item_id = input(
                     "Enter the ID of the video game you want to add to your cart: ")
                 quantity = input("Enter the quantity you want to add: ")
-                shoppingCart.add_cart_item_product(
+                inventory_Functions.add_to_cart(
                 1, "videoGames", item_id, quantity)  # function to add item to cart
             elif choice.lower() == "n":
                 mainMenu()
