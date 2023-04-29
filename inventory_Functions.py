@@ -91,6 +91,23 @@ def remove_from_cart():
     conn.close()
 
 
+def inventory_display():
+    # Connect to the database
+    conn = sqlite3.connect('site.db')
+    cursor = conn.cursor()
+
+    # Execute the query
+    cursor.execute('SELECT * FROM inventory')
+    rows = cursor.fetchall()
+
+    # Display the inventory data
+    for row in rows:
+        print(row)
+
+    # Close the connection
+    cursor.close()
+    conn.close()
+
 """
 def main(): #not needed since they'll be individually used in main.py
     while True:
