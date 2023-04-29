@@ -2,7 +2,6 @@ import sqlite3
 
 # Function to view available t-shirts
 
-
 def view_all_tshirts():
     # Connect to the database
     conn = sqlite3.connect('site.db')
@@ -20,6 +19,3 @@ def view_all_tshirts():
         print("Size: ", tshirt[3])
         print("Cost: ", tshirt[4])
         print("\n")
-
-    # Close the database connection
-    conn.close()

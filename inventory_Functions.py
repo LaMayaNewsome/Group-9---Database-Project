@@ -1,20 +1,24 @@
 import sqlite3
 
 def inventory_editQuantity(item_Quantity):
-    item_id = int(input("Enter the ID of the product (either tshirt or video game) you want change the quantity of: "))
+    item_id = int(input("Enter the inventory ID of the product (either tshirt or video game) you want to change the quantity of: "))
 
     conn = sqlite3.connect('site.db')
     c = conn.cursor()
 
     # Execute an SQL UPDATE statement to update values in the database
-    if item_id in range(101,103):
-        c.execute("UPDATE inventory SET quantity = ?", (item_Quantity))
-    
-    elif item_id in range(1,3):
-        c.execute("UPDATE inventory SET quantity = ?", (item_Quantity))
-    
+    if item_id in range(1, 3):
+        if item_Quantity >= 0:
+            c.execute("UPDATE inventory SET quantity = ? WHERE inventory_ID = ?", (item_Quantity, item_id))
+        else:
+            print("Quantity cannot be negative.")
+    elif item_id in range(1, 3):
+        if item_Quantity >= 0:
+            c.execute("UPDATE inventory SET quantity = ? WHERE inventory_ID = ?", (item_Quantity, item_id))
+        else:
+            print("Quantity cannot be negative.")
     else:
-        print("Item ID Not Found, Please Try Again...")
+        print("Item ID not found. Please try again.")
 
     # Commit the transaction
     conn.commit()
@@ -90,24 +94,42 @@ def remove_from_cart():
 
     conn.close()
 
+def inventory_display():
+    # Connect to the database
+    conn = sqlite3.connect('your_database_file.db')
+    cursor = conn.cursor()
+
+    # Execute the query
+    cursor.execute('SELECT * FROM inventory')
+    rows = cursor.fetchall()
+
+    # Display the inventory data
+    for row in rows:
+        print(row)
+
+    # Close the connection
+    cursor.close()
+    conn.close()
 
 def main():
     while True:
         print("\nMenu:")
-        print("1. Edit an item's Quantity")
-        print("2. Add Item to Shopping Cart")
-        print("3. Remove item from Shopping Cart")
-        print("4. Quit")
+        print("1. View Current Item Inventory")
+        print("2. Edit an item's Quantity")
+        print("3. Add Item to Shopping Cart")
+        print("4. Remove item from Shopping Cart")
+        print("5. Quit")
 
         choice = int(input("Enter your choice: "))
-
         if choice == 1:
-            inventory_editQuantity()
+            inventory_display()
         elif choice == 2:
-            add_to_cart()
+            inventory_editQuantity()
         elif choice == 3:
-            remove_from_cart()
+            add_to_cart()
         elif choice == 4:
+            remove_from_cart()
+        elif choice == 5:
             break
         else:
             print("Invalid choice, please try again.")
