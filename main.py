@@ -148,6 +148,7 @@ def accountOptions():
         if accountChoice == "1":
             username = input("Please enter the username of the account you would like to delete:")
             user.deleteUser(username)
+            loginMain()
             break
         elif accountChoice == "2":
             # print("Edit payment information")
