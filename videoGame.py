@@ -17,8 +17,8 @@ def viewAllGames():
         print("ID: ", game[0])
         print("Name: ", game[1])
         print("Description: ", game[2])
-        print("Platform: ", game[3])
-        print("Cost: ", game[4])
+        print("Platform: ", game[4])
+        print("Cost: ", game[3])
 
     # Close the database connection
     conn.close()
