@@ -138,7 +138,7 @@ def editShipping(username):
 def deleteUser(username):
     conn.execute("DELETE FROM user WHERE username = ?", (username,))
     token = nameToID(username)
-    conn.execute("UPDATE shoppingCart SET status = -1 WHERE user_cartID = token ")
+    conn.execute("UPDATE shoppingCart SET status = -1 WHERE user_cartID = ? ", (token,))
     #Status = -1 means removed for Order History purposes
     conn.commit()
     conn.close()
