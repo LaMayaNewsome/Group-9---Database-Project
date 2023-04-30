@@ -31,28 +31,28 @@ def register(username, password):
             break
     if not userID_exists:
         # Create the user_id column if it does not exist
-        cur.execute("ALTER TABLE user ADD COLUMN user_id INTEGER PRIMARY KEY")
+        cur.execute("ALTER TABLE user ADD COLUMN userID INTEGER PRIMARY KEY")
         conn.commit()
     # Get the highest existing user ID from the database
-    cur.execute("SELECT MAX(user_id) FROM user")
-    max_user_id = cur.fetchone()[0]
-    if max_user_id is None:
-        max_user_id = 0
+    cur.execute("SELECT MAX(userID) FROM user")
+    max_userID = cur.fetchone()[0]
+    if max_userID is None:
+        max_userID = 0
     # Generate a new user ID by adding 1 to the highest existing user ID
-    user_id = max_user_id + 1
-    cur.execute("INSERT INTO user (user_id, username, password) VALUES (?, ?, ?)",
-                (user_id, username, password))
+    userID = max_userID + 1
+    cur.execute("INSERT INTO user (userID, username, password) VALUES (?, ?, ?)",
+                (userID, username, password))
     conn.commit()
-    return user_id  # Return the new user ID
+    return userID  # Return the new user ID
 
 
 def createAccount(username, password):
     # Register the new user and get the user ID
-    user_id = register(username, password)
+    userID = register(username, password)
     # Insert the user's details into the users table
     cur = conn.cursor()
-    cur.execute("INSERT INTO user (user_id, username, password) VALUES (?, ?, ?)",
-                (user_id, username, password))
+    cur.execute("INSERT INTO user (userID, username, password) VALUES (?, ?, ?)",
+                (userID, username, password))
     conn.commit()
 
 
