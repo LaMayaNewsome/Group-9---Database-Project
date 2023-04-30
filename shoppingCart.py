@@ -63,7 +63,10 @@ def cart_checkout(input_userCartID):
     cursor.close()
     conn.close()
 
-def review_all_cart():
+def review_all_cart(input_userCartID):
+    # Connect to the database file
+    cartOrders = []
+
     # Connect to the database file
     conn = sqlite3.connect('site.db')
 
@@ -71,23 +74,32 @@ def review_all_cart():
     cursor = conn.cursor()
 
     # Execute a SELECT statement to retrieve all data from the table
-    cursor.execute("SELECT * FROM shoppingCart")
+    cursor.execute("SELECT * FROM shoppingCart where status = 0 and user_cartID = ?",
+                   (input_userCartID,))
 
-    # Fetch all rows of the result set and store them in a list of tuples
-    rows = cursor.fetchall()
+    allOrder = cursor.fetchall()
 
-    for r in rows:
-        print(r[0])
+    for eachOrder in allOrder:
+        tableDirect = eachOrder[1]
+        product_id = eachOrder[2]
+        if (tableDirect == "VideoGame"):
+            cursor.execute("Select * from videoGames where gameID = ?", (product_id,))
+        else:
+            cursor.execute("Select * from t_shirt where t_shirt_id = ?", (product_id,))
+
+
+        ItemSet = cursor.fetchall()
+
+        for eachItem1 in ItemSet:
+            if (tableDirect == "VideoGame"):
+                print(eachItem1[2])
+            else:
+                print(eachItem1[1])
+
 
     # Close the cursor and the database connection
     cursor.close()
     conn.close()
-
-    # Convert the list of tuples into a list of lists
-    list_of_lists = [list(row) for row in rows]
-
-    # Print the list of lists
-    print(list_of_lists)
 
 def view_past_carts(input_user_id):
     # Connect to the database file
