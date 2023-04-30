@@ -68,27 +68,34 @@ def login():
         main.mainMenu()
 
 
-def editPaymentInfo(userID):
+import sqlite3
+
+def editPaymentInfo(username):
     conn = sqlite3.connect('site.db')
     c = conn.cursor()
 
     # Retrieve current payment info
-    c.execute("SELECT payment_info FROM users WHERE user_id = ?", (userID,))
-    current_payment_info = c.fetchone()[0]
+    c.execute("SELECT payment FROM user WHERE username = ?", (username,))
+    result = c.fetchone()
+    if result is None:
+        print("User not found.")
+        conn.close()
+        return
 
+    current_payment_info = result[0]
     print("Your current payment info is:", current_payment_info)
 
     # Prompt user for new payment info
     new_payment_info = input("Enter your new payment info: ")
 
     # Update payment info in the database
-    c.execute("UPDATE users SET payment_info = ? WHERE user_id = ?",
-              (new_payment_info, userID))
+    c.execute("UPDATE user SET payment = ? WHERE username = ?", (new_payment_info, username))
     conn.commit()
 
     print("Payment info updated successfully!")
 
     conn.close()
+
 
 
 def editShipping():
@@ -97,9 +104,6 @@ def editShipping():
     conn.execute("INSERT INTO user (shippingAddress) VALUES (?)",
                  (shippingAddress))
 
-
-def logout():
-    conn.close()  # Closing the connection is the logout
 
 
 def deleteUser(username):

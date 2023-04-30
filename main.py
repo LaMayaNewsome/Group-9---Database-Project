@@ -149,19 +149,20 @@ def accountOptions():
     while True:
         accountChoice = displayAccountMenu()
         if accountChoice == "1":
-            username = input("Please enter the username of the account you would like to delete:")
+            username = input("Please enter your username to delete your account:")
             user.deleteUser(username)
             loginMain()
             break
         elif accountChoice == "2":
-            # print("Edit payment information")
-            user.editPayment()
+            username = print("Please enter your username to edit payment info:")
+            user.editPaymentInfo(username)
         elif accountChoice == "3":
             # print("Edit shipping information")
             user.editShipping()
         elif accountChoice == "4":
-            print("order history")
-        elif accountChoice == "51":
+            print("Order History")
+        elif accountChoice == "5":
+            displayMainMenu()
             break
         else:
             print("Invalid choice. Please try again.")
