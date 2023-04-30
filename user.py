@@ -98,11 +98,31 @@ def editPaymentInfo(username):
 
 
 
-def editShipping():
-    shippingAddress = input("Enter New Address: ")
+def editShipping(username):
+    conn = sqlite3.connect('site.db')
+    c = conn.cursor()
 
-    conn.execute("INSERT INTO user (shippingAddress) VALUES (?)",
-                 (shippingAddress))
+    # Retrieve current payment info
+    c.execute("SELECT shippingAddress FROM user WHERE username = ?", (username,))
+    result = c.fetchone()
+    if result is None:
+        print("User not found.")
+        conn.close()
+        return
+
+    current_shipping_info = result[0]
+    print("Your current shipping info is:", current_shipping_info)
+
+    # Prompt user for new payment info
+    new_shipping_info = input("Enter your new shipping info: ")
+
+    # Update payment info in the database
+    c.execute("UPDATE user SET shippingAddress = ? WHERE username = ?", (new_shipping_info, username))
+    conn.commit()
+
+    print("Shipping info updated successfully!")
+
+    conn.close()
 
 
 

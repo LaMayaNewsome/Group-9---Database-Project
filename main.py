@@ -157,8 +157,8 @@ def accountOptions():
             username = input("Please enter your username to edit payment info:")
             user.editPaymentInfo(username)
         elif accountChoice == "3":
-            # print("Edit shipping information")
-            user.editShipping()
+            username = input("Please enter your username to edit shipping info:")
+            user.editShipping(username)
         elif accountChoice == "4":
             print("Order History")
         elif accountChoice == "5":
