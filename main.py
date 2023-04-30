@@ -31,13 +31,15 @@ def loginMain():
         user.login()
 
     elif loginChoice == "2":
-        user.createAccount()
+        username = input("Enter a username: ")
+        password = input("Enter a password: ")
+        # Call createAccount() with the username and password
+        user.createAccount(username, password)
+        print("Account created successfully. Please log in. \n")
+        user.login()
 
-        # Show success message and return to login menu
-        print("Account created successfully. Please log in.")
-        loginMenu()
     else:
-        print("Invalid choice. Please try again.")
+        print("Invalid choice. Please try again. \n")
         loginMenu()
 
 # Function to display the main menu
@@ -89,7 +91,7 @@ def shop():
             choice = input(
                 "Would you like to add a t-shirt to your cart? (y/n):")
             if choice.lower() == "y":
-               
+
                 # function to add item to cart
                 inventory_Functions.add_to_cart()
             elif choice.lower() == "n":

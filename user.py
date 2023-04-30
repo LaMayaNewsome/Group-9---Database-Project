@@ -5,31 +5,41 @@ import main
 conn = sqlite3.connect('site.db')
 
 
-def createAccount():
-
-    if os.path.exists("site.db"):
-        conn = sqlite3.connect("site.db")
-        c = conn.cursor()
-    else:
-        conn = sqlite3.connect("site.db")
-        c = conn.cursor()
-
-        c.execute('''CREATE TABLE user
-            (username text, password text)''')
-
-    username = input("Enter account username to add: ")
-    password = input("Enter account password to add: ")
-    shippingAddress = input("Enter Shipping Address: ")
-    payment = input("Enter Card Number: ")
-
-    c.execute("INSERT INTO user VALUES (?, ?, ?, ?)", [
-              username, password, shippingAddress, payment])
-
+def register(username, password):
+    # Check if the user_id column exists in the users table
+    cur = conn.cursor()
+    cur.execute("PRAGMA table_info(user)")
+    columns = cur.fetchall()
+    user_id_exists = False
+    for column in columns:
+        if column[1] == "user_id":
+            user_id_exists = True
+            break
+    if not user_id_exists:
+        # Create the user_id column if it does not exist
+        cur.execute("ALTER TABLE user ADD COLUMN user_id INTEGER PRIMARY KEY")
+        conn.commit()
+    # Get the highest existing user ID from the database
+    cur.execute("SELECT MAX(user_id) FROM user")
+    max_user_id = cur.fetchone()[0]
+    if max_user_id is None:
+        max_user_id = 0
+    # Generate a new user ID by adding 1 to the highest existing user ID
+    user_id = max_user_id + 1
+    cur.execute("INSERT INTO user (user_id, username, password) VALUES (?, ?, ?)",
+                (user_id, username, password))
     conn.commit()
-    conn.close()
+    return user_id  # Return the new user ID
 
-    print("Account added")
-    main.loginMain()
+
+def createAccount(username, password):
+    # Register the new user and get the user ID
+    user_id = register(username, password)
+    # Insert the user's details into the users table
+    cur = conn.cursor()
+    cur.execute("INSERT INTO user (user_id, username, password) VALUES (?, ?, ?)",
+                (user_id, username, password))
+    conn.commit()
 
 
 def login():
