@@ -52,7 +52,7 @@ def login():
 
     if c.fetchone() == None:
         print("Incorrct credentials")
-        login()
+        main.mainMenu()
     else:
         print("Logged in!")
         main.mainMenu()

@@ -152,10 +152,10 @@ def accountOptions():
             break
         elif accountChoice == "2":
             # print("Edit payment information")
-            user.editPayment()
+            user.editPayment(2)
         elif accountChoice == "3":
             # print("Edit shipping information")
-            user.editShipping()
+            user.editShipping(3)
         elif accountChoice == "4":
             print("order history")
         elif accountChoice == "5":
