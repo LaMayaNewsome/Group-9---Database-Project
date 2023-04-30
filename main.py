@@ -50,7 +50,7 @@ def displayMainMenu():
     print("Welcome to our e-commerce store!")
     print("1. Shop")
     print("2. Account options")
-    print("3. Exit")
+    print("3. Logout")
     return input("Please choose and option (1-3): ")
 
 # Function for the overall logic
@@ -64,7 +64,8 @@ def mainMenu():
         elif mainChoice == "2":
             accountOptions()
         elif mainChoice == "3":
-            print("Thank you for shopping with us!")
+            print("Thank you for shopping at Walmart!")
+            loginMain()
             break
         else:
             print("Invalid choice. Please try again.")
@@ -160,7 +161,7 @@ def accountOptions():
             user.editShipping()
         elif accountChoice == "4":
             print("order history")
-        elif accountChoice == "5":
+        elif accountChoice == "51":
             break
         else:
             print("Invalid choice. Please try again.")
