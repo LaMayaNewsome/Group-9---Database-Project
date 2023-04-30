@@ -110,7 +110,7 @@ def view_past_carts(input_user_id):
     cursor = conn.cursor()
 
     # Execute a SELECT statement to retrieve all data from the table
-    cursor.execute("SELECT * FROM shoppingCart where status = 0 and user_cartID = ?",
+    cursor.execute("SELECT * FROM shoppingCart where status = -1 and user_cartID = ?",
                    (input_user_id,))
 
     allOrder = cursor.fetchall()

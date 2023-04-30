@@ -160,7 +160,7 @@ def accountOptions():
             # print("Edit shipping information")
             user.editShipping(3)
         elif accountChoice == "4":
-            print("order history")
+            shoppingCart.view_past_carts(1)
         elif accountChoice == "51":
             break
         else:
