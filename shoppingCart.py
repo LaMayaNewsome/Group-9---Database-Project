@@ -124,6 +124,8 @@ def view_past_carts(input_user_id):
     # Print the list of lists
     print(list_of_lists)
 
+
+view_past_carts(1)
 def add_cart_item_product(input_userCart, input_table, input_product, input_quantity):
     # Connect to the SQLite database
     conn = sqlite3.connect('site.db')
