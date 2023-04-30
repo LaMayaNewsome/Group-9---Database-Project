@@ -41,7 +41,7 @@ def add_to_cart():
             print("Insufficient stock!")
         else:
             cursor.execute(
-                'INSERT INTO shoppingCart (user_cartID, table_name, product_ID, quantity) VALUES (?, ?, ?, ?)', (1, "T-Shirt", item_id,  quantity))
+                'INSERT INTO shoppingCart (user_cartID, table_name, product_ID, quantity, status) VALUES (?, ?, ?, ?, ?)', (1, "T-Shirt", item_id,  quantity, 0))
             cursor.execute(
                 'UPDATE inventory SET item_Quantity=item_Quantity-? WHERE tshirt_ID=?', (quantity, item_id))
             conn.commit()
@@ -57,7 +57,7 @@ def add_to_cart():
             print("Insufficient stock!")
         else:
             cursor.execute(
-                'INSERT INTO shoppingCart (user_cartID, table_name, product_ID, quantity) VALUES (?, ?, ?, ?)', (1, "Video Game", item_id,  quantity))
+                'INSERT INTO shoppingCart (user_cartID, table_name, product_ID, quantity, status) VALUES (?, ?, ?, ?, ?)', (1, "Video Game", item_id,  quantity, 0))
             cursor.execute(
                 'UPDATE inventory SET item_Quantity=item_Quantity-? WHERE VideoGame_ID=?', (quantity, item_id))
             conn.commit()
