@@ -96,11 +96,11 @@ def shop():
                 # function to add item to cart
                 inventory_Functions.add_to_cart()
             elif choice.lower() == "n":
-                mainMenu()
+                displayShopMenu()
             else:
                 print(
-                    "Incorrect Option Entered. You will now be returned back to the main menu.")
-                mainMenu()
+                    "Incorrect Option Entered. You will now be returned back to the shop menu.")
+                displayShopMenu()
 
         elif shopChoice == "2":
             videoGame.viewAllGames()
@@ -109,7 +109,10 @@ def shop():
             if choice.lower() == "y":
                 inventory_Functions.add_to_cart()
             elif choice.lower() == "n":
-                mainMenu()
+                displayShopMenu()
+            else:
+                print("Incorrect Option Entered. You will now be returned back to the shop menu.")
+                displayShopMenu()
 
         elif shopChoice == "3":
             shoppingCart.review_all_cart()  # function to view cart
