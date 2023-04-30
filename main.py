@@ -48,7 +48,7 @@ def displayMainMenu():
     print("Welcome to our e-commerce store!")
     print("1. Shop")
     print("2. Account options")
-    print("3. Exit")
+    print("3. Logout")
     return input("Please choose and option (1-3): ")
 
 # Function for the overall logic
