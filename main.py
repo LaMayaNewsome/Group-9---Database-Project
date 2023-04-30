@@ -10,6 +10,7 @@ import shoppingCart
 import inventory_Functions
 import Tshirt
 import user
+import turtle
 
 
 # Function to login or create a new account
