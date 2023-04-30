@@ -2,8 +2,8 @@
 # LaMaya Newsome - ljn72
 # Keshawn Davis - kld609
 # Lucas Foley - lhf57
-# Sam Hankins
-# Maxwell
+# Sam Hankins - sgh243
+# Maxwell - mvl57
 
 import videoGame
 import shoppingCart
