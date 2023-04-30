@@ -62,7 +62,7 @@ def login():
 
     if c.fetchone() == None:
         print("Incorrct credentials")
-        login()
+        main.mainMenu()
     else:
         print("Logged in!")
         main.mainMenu()
@@ -123,11 +123,10 @@ def editShipping(username):
     print("Shipping info updated successfully!")
 
     conn.close()
-
-
-
+    
 def deleteUser(username):
     conn.execute("DELETE FROM user WHERE username = ?", (username,))
 
     conn.commit()
     conn.close()
+
