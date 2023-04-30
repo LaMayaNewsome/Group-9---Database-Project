@@ -110,7 +110,7 @@ def view_past_carts(input_user_id):
     cursor = conn.cursor()
 
     # Execute a SELECT statement to retrieve all data from the table
-    cursor.execute("SELECT * FROM shoppingCart where status = 0 and user_cartID = ?",
+    cursor.execute("SELECT * FROM shoppingCart where status = -1 and user_cartID = ?",
                    (input_user_id,))
 
     allOrder = cursor.fetchall()
@@ -162,6 +162,21 @@ def update_item_quantity(input_userCart, input_product, input_table, input_newQu
     # Execute an SQL UPDATE statement to update values in the database
     c.execute("UPDATE shoppingCart SET quantity = ? WHERE user_cartID = ? AND product_id = ? AND table_name = ?",
               (input_newQuantity, input_userCart, input_product, input_table))
+
+    # Commit the transaction
+    conn.commit()
+
+    # Close the database connection
+    conn.close()
+
+def update_item_quantity(input_userCart, input_product, input_table, input_newQuantity):
+    # Connect to the SQLite database
+    conn = sqlite3.connect('site.db')
+    c = conn.cursor()
+
+    # Execute an SQL UPDATE statement to update values in the database
+    c.execute("UPDATE shoppingCart SET status = ? WHERE user_cartID = ? AND product_id = ? AND table_name = ?",
+              (-1, input_userCart, input_product, input_table))
 
     # Commit the transaction
     conn.commit()
