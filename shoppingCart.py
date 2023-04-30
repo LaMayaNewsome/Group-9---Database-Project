@@ -92,9 +92,9 @@ def review_all_cart(input_userCartID):
 
         for eachItem1 in ItemSet:
             if (tableDirect == "Video Game"):
-                print(eachItem1[2])
+                print(eachItem1[2], " - $", eachItem1[3])
             else:
-                print(eachItem1[1])
+                print(eachItem1[1], " - $", eachItem1[4])
 
 
     # Close the cursor and the database connection
