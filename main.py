@@ -78,7 +78,7 @@ def displayShopMenu():
     print("Shop Options:")
     print("1. Browse t-shirts")
     print("2. Browse video games")
-    print("3. View cart")
+    print("3. Remove Item")
     print("4. Checkout")
     print("5. Return to main menu")
     return input("Please choose an option: ")
@@ -123,7 +123,7 @@ def shop(username):
             if choice.lower() == "y":
                 inventory_Functions.remove_from_cart(tokenId)
             elif choice.lower() == "n":
-                mainMenu()
+                mainMenu(username)
 
         elif shopChoice == "4":
             tokenId = user.nameToID(username)
