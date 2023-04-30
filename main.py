@@ -136,7 +136,7 @@ def shop():
 
 # Function to display Account options menu
 def displayAccountMenu():
-    print("Account Options:")
+    print("\n\nAccount Options:")
     print("1. Delete account")
     print("2. Edit payment information")
     print("3. Edit shipping information")
