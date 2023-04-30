@@ -41,9 +41,9 @@ def add_to_cart():
             print("Insufficient stock!")
         else:
             cursor.execute(
-                'INSERT INTO shoppingCart (user_cartID, table_name, product_ID, quantity, status) VALUES (?, ?, ?, ?, ?)', (1, "T-Shirt", item_id,  quantity, 0))
+                'INSERT INTO shoppingCart (user_cartID, table_name, product_ID, quantity, status) VALUES (?, ?, ?, ?, ?)', (1, "T-Shirt", item_id,  quantity, 0,))
             cursor.execute(
-                'UPDATE inventory SET item_Quantity=item_Quantity-? WHERE tshirt_ID=?', (quantity, item_id))
+                'UPDATE inventory SET item_Quantity=item_Quantity-? WHERE tshirt_ID=?', (quantity, item_id,))
             conn.commit()
             print("T-shirt added to cart successfully!")
 
@@ -57,9 +57,9 @@ def add_to_cart():
             print("Insufficient stock!")
         else:
             cursor.execute(
-                'INSERT INTO shoppingCart (user_cartID, table_name, product_ID, quantity, status) VALUES (?, ?, ?, ?, ?)', (1, "Video Game", item_id,  quantity, 0))
+                'INSERT INTO shoppingCart (user_cartID, table_name, product_ID, quantity, status) VALUES (?, ?, ?, ?, ?)', (1, "Video Game", item_id,  quantity, 0,))
             cursor.execute(
-                'UPDATE inventory SET item_Quantity=item_Quantity-? WHERE VideoGame_ID=?', (quantity, item_id))
+                'UPDATE inventory SET item_Quantity=item_Quantity-? WHERE VideoGame_ID=?', (quantity, item_id,))
             conn.commit()
             print("Video Game added to cart successfully!")
 
@@ -76,21 +76,21 @@ def remove_from_cart():
     conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT * FROM shopping_cart WHERE cart_id=?', (cart_id))
+    cursor.execute('SELECT * FROM shoppingCart WHERE user_cartID=?', (cart_id,))
     item = cursor.fetchone()
 
     if item is None:
         print("Item not found in cart!")
     elif item in range(101, 103):
-        cursor.execute('DELETE FROM shopping_cart WHERE cart_id=?', (cart_id,))
+        cursor.execute('DELETE FROM shoppingCart WHERE user_cartID=?', (cart_id,))
         cursor.execute(
-            'UPDATE inventory SET quantity=quantity+? WHERE t_shirt_id=?', (item[3], item[2]))
+            'UPDATE inventory SET quantity=quantity+? WHERE t_shirt_id=?', (item[3], item[2],))
         conn.commit()
         print("Item removed from cart successfully!")
     elif item in range(1, 3):
-        cursor.execute('DELETE FROM shopping_cart WHERE cart_id=?', (cart_id,))
+        cursor.execute('DELETE FROM shoppingCart WHERE user_cartID=?', (cart_id,))
         cursor.execute(
-            'UPDATE inventory SET quantity=quantity+? WHERE gameID=?', (item[3], item[2]))
+            'UPDATE inventory SET quantity=quantity+? WHERE gameID=?', (item[3], item[2],))
         conn.commit()
         print("Item removed from cart successfully!")
 
