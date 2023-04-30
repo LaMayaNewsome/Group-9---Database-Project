@@ -24,12 +24,12 @@ def register(username, password):
     cur = conn.cursor()
     cur.execute("PRAGMA table_info(user)")
     columns = cur.fetchall()
-    user_id_exists = False
+    userID_exists = False
     for column in columns:
-        if column[1] == "user_id":
-            user_id_exists = True
+        if column[1] == "userID":
+            userID_exists = True
             break
-    if not user_id_exists:
+    if not userID_exists:
         # Create the user_id column if it does not exist
         cur.execute("ALTER TABLE user ADD COLUMN user_id INTEGER PRIMARY KEY")
         conn.commit()

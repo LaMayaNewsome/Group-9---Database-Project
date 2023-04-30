@@ -3,7 +3,7 @@
 # Keshawn Davis - kld609
 # Lucas Foley - lhf57
 # Sam Hankins - sgh243
-# Maxwell - mvl57
+# Maxwell Lam - mvl57
 
 import videoGame
 import shoppingCart
