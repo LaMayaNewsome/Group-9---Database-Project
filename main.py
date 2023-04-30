@@ -50,7 +50,7 @@ def displayMainMenu():
     print("Welcome to our e-commerce store!")
     print("1. Shop")
     print("2. Account options")
-    print("3. Exit")
+    print("3. Logout")
     return input("Please choose and option (1-3): ")
 
 # Function for the overall logic
@@ -154,10 +154,10 @@ def accountOptions():
             break
         elif accountChoice == "2":
             # print("Edit payment information")
-            user.editPayment()
+            user.editPayment(2)
         elif accountChoice == "3":
             # print("Edit shipping information")
-            user.editShipping()
+            user.editShipping(3)
         elif accountChoice == "4":
             print("order history")
         elif accountChoice == "5":
