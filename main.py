@@ -131,8 +131,6 @@ def shop():
 # checkout
 # the user will be able to checkout and purchase all items in the cart
 
-
-# Function to display Account options menu
 # Function to display Account options menu
 def displayAccountMenu():
     print("Account Options:")
@@ -148,7 +146,8 @@ def accountOptions():
     while True:
         accountChoice = displayAccountMenu()
         if accountChoice == "1":
-            user.deleteUser(1)
+            username = input("Please enter the username of the account you would like to delete:")
+            user.deleteUser(username)
             break
         elif accountChoice == "2":
             # print("Edit payment information")
