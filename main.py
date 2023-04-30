@@ -154,7 +154,7 @@ def accountOptions():
             loginMain()
             break
         elif accountChoice == "2":
-            username = print("Please enter your username to edit payment info:")
+            username = input("Please enter your username to edit payment info:")
             user.editPaymentInfo(username)
         elif accountChoice == "3":
             # print("Edit shipping information")
