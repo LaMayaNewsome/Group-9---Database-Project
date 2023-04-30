@@ -66,7 +66,6 @@ def cart_checkout(input_userCartID):
     print("Checkout Complete!")
 def review_all_cart(input_userCartID):
     # Connect to the database file
-    cartOrders = []
 
     # Connect to the database file
     conn = sqlite3.connect('site.db')
@@ -83,7 +82,7 @@ def review_all_cart(input_userCartID):
     for eachOrder in allOrder:
         tableDirect = eachOrder[1]
         product_id = eachOrder[2]
-        if (tableDirect == "VideoGame"):
+        if (tableDirect == "Video Game"):
             cursor.execute("Select * from videoGames where gameID = ?", (product_id,))
         else:
             cursor.execute("Select * from t_shirt where t_shirt_id = ?", (product_id,))
@@ -92,7 +91,7 @@ def review_all_cart(input_userCartID):
         ItemSet = cursor.fetchall()
 
         for eachItem1 in ItemSet:
-            if (tableDirect == "VideoGame"):
+            if (tableDirect == "Video Game"):
                 print(eachItem1[2])
             else:
                 print(eachItem1[1])
@@ -118,7 +117,7 @@ def view_past_carts(input_user_id):
     for eachOrder in allOrder:
         tableDirect = eachOrder[1]
         product_id = eachOrder[2]
-        if (tableDirect == "VideoGame"):
+        if (tableDirect == "Video Game"):
             cursor.execute("Select * from videoGames where gameID = ?", (product_id,))
         else:
             cursor.execute("Select * from t_shirt where t_shirt_id = ?", (product_id,))
@@ -127,7 +126,7 @@ def view_past_carts(input_user_id):
         ItemSet = cursor.fetchall()
 
         for eachItem1 in ItemSet:
-            if (tableDirect == "VideoGame"):
+            if (tableDirect == "Video Game"):
                 print(eachItem1[2])
             else:
                 print(eachItem1[1])
