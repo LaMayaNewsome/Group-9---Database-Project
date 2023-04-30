@@ -56,13 +56,13 @@ def displayMainMenu():
 # Function for the overall logic
 
 
-def mainMenu():
+def mainMenu(username):
     while True:
         mainChoice = displayMainMenu()
         if mainChoice == "1":
-            shop()
+            shop(username)
         elif mainChoice == "2":
-            accountOptions()
+            accountOptions(username)
         elif mainChoice == "3":
             print("Thank you for shopping at Walmart!")
             loginMain()
@@ -84,7 +84,7 @@ def displayShopMenu():
     return input("Please choose an option: ")
 
 
-def shop():
+def shop(username):
     while True:
         shopChoice = displayShopMenu()
         if shopChoice == "1":
@@ -115,7 +115,9 @@ def shop():
                 displayShopMenu()
 
         elif shopChoice == "3":
-            shoppingCart.review_all_cart()  # function to view cart
+
+            tokenId = user.nameToID(username)
+            shoppingCart.review_all_cart(tokenId)  # function to view cart
             choice = input(
                 "Would you like to remove an item from your cart? (y/n):")
             if choice.lower() == "y":
@@ -124,7 +126,8 @@ def shop():
                 mainMenu()
 
         elif shopChoice == "4":
-            shoppingCart.cart_checkout(1)  # function to checkout
+            tokenId = user.nameToID(username)
+            shoppingCart.cart_checkout(tokenId)  # function to checkout
         elif shopChoice == "5":
             break
         else:
@@ -148,7 +151,7 @@ def displayAccountMenu():
     return input("Please choose an option: ")
 
 
-def accountOptions():
+def accountOptions(username):
     while True:
         accountChoice = displayAccountMenu()
         if accountChoice == "1":
@@ -164,6 +167,8 @@ def accountOptions():
             user.editShipping(username)
         elif accountChoice == "4":
             print("Order History")
+            tokenId = user.nameToID(username)
+            shoppingCart.view_past_carts(tokenId)
         elif accountChoice == "5":
             displayMainMenu()
             break

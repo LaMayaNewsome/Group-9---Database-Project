@@ -4,6 +4,20 @@ import main
 
 conn = sqlite3.connect('site.db')
 
+def nameToID(username):
+    # Connect to the database file
+    conn = sqlite3.connect('site.db')
+
+    # Create a cursor object
+    cursor = conn.cursor()
+
+    # Execute a SELECT statement to retrieve all data from the table
+    cursor.execute("SELECT * FROM user where username = ?", (username,))
+
+    names = cursor.fetchall()
+
+    for name in names:
+        return name[2]
 
 def register(username, password):
     # Check if the user_id column exists in the users table
@@ -65,7 +79,7 @@ def login():
         main.mainMenu()
     else:
         print("Logged in!")
-        main.mainMenu()
+        main.mainMenu(username)
 
 
 import sqlite3
