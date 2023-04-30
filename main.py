@@ -10,6 +10,7 @@ import shoppingCart
 import inventory_Functions
 import Tshirt
 import user
+import sys
 import turtle
 
 
@@ -20,7 +21,8 @@ def loginMenu():
     print("Please select an option:")
     print("1. Login")
     print("2. Create Account")
-    return input("Enter your choice(1-2): ")
+    print("3. Exit Program")
+    return input("Enter your choice(1-3): ")
 
 # Handle user choice for login
 
@@ -37,6 +39,8 @@ def loginMain():
         user.createAccount(username, password)
         print("Account created successfully. Please log in. \n")
         user.login()
+    elif loginChoice == "3":
+        sys.exit()
 
     else:
         print("Invalid choice. Please try again. \n")
@@ -115,11 +119,12 @@ def shop():
                 displayShopMenu()
 
         elif shopChoice == "3":
-            shoppingCart.review_all_cart()  # function to view cart
+            input_userCartID = input("Enter your user_cartID (1) to view your cart: ")
+            shoppingCart.review_all_cart(input_userCartID)  # function to view cart
             choice = input(
                 "Would you like to remove an item from your cart? (y/n):")
             if choice.lower() == "y":
-                inventory_Functions.remove_from_cart()
+                inventory_Functions.remove_from_cart(input_userCartID)
             elif choice.lower() == "n":
                 mainMenu()
 
