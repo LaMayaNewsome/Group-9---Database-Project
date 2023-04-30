@@ -63,6 +63,7 @@ def cart_checkout(input_userCartID):
     cursor.close()
     conn.close()
 
+    print("Checkout Complete!")
 def review_all_cart(input_userCartID):
     # Connect to the database file
     cartOrders = []
@@ -135,8 +136,6 @@ def view_past_carts(input_user_id):
     # Close the cursor and the database connection
     cursor.close()
     conn.close()
-
-view_past_carts(1)
 
 def add_cart_item_product(input_userCart, input_table, input_product, input_quantity):
     # Connect to the SQLite database
