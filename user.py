@@ -92,8 +92,8 @@ def logout():
     conn.close()  # Closing the connection is the logout
 
 
-def deleteUser():
-    conn.execute("DELETE FROM user WHERE username = ?, DELETE FROM user WHERE payment = ?, DELETE FROM user WHERE shippingAddress = ?", ('current user',))
+def deleteUser(username):
+    conn.execute("DELETE FROM user WHERE username = ?", (username,))
 
     conn.commit()
     conn.close()
