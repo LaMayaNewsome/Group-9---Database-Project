@@ -157,17 +157,11 @@ def accountOptions():
             loginMain()
             break
         elif accountChoice == "2":
-<<<<<<< Updated upstream
             username = input("Please enter your username to edit payment info:")
             user.editPaymentInfo(username)
         elif accountChoice == "3":
             username = input("Please enter your username to edit shipping info:")
             user.editShipping(username)
-=======
-            user.editPayment(2)
-        elif accountChoice == "3":
-            user.editShipping(3)
->>>>>>> Stashed changes
         elif accountChoice == "4":
             print("Order History")
         elif accountChoice == "5":
