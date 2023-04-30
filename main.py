@@ -137,9 +137,6 @@ def shop(username):
 # view cart
 # the user should be able to view all items in their cart and remove any item they don't want
 
-# checkout
-# the user will be able to checkout and purchase all items in the cart
-
 # Function to display Account options menu
 def displayAccountMenu():
     print("\n\nAccount Options:")
