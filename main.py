@@ -121,7 +121,7 @@ def shop(username):
             choice = input(
                 "Would you like to remove an item from your cart? (y/n):")
             if choice.lower() == "y":
-                inventory_Functions.remove_from_cart()
+                inventory_Functions.remove_from_cart(tokenId)
             elif choice.lower() == "n":
                 mainMenu()
 
